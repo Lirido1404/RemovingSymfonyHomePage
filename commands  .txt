@@ -1,0 +1,50 @@
+commands : 
+
+
+symfony new nameproject --webapp
+php bin/console make:controller DefaultController
+symfony server:start
+
+
+
+
+
+DefaultController.php :
+
+<?php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
+
+class DefaultController extends AbstractController
+{
+    #[Route('/', name: 'app_homepage')]
+    public function index(): Response
+    {
+        return $this->render('default/index.html.twig', [
+            'message' => 'Hello', // Définir la variable 'message'
+        ]);
+    }
+}
+
+
+
+
+index.html.twig :
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page d'accueil</title>
+</head>
+<body>
+    <h1>{{ message }}</h1>
+            
+
+</body>
+</html>
+
+
